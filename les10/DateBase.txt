@@ -1,0 +1,29 @@
+
+User {
+	id integer pk increments
+	login text
+	hash_password integer
+}
+
+GroupUser {
+	id integer pk increments
+	id_user integer >* User.id
+}
+
+VacumeCleaner {
+	id integer pk increments
+	model char
+	version integer
+	status text
+	resourse integer
+	fabric_name text
+	ip_adress text
+	id_GroupUser integer > GroupUser.id
+}
+
+id {
+	id integer pk increments
+	date_time datetime
+	mode text
+	id_vacum_cleaner integer >* VacumeCleaner.id
+}
